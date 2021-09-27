@@ -6,13 +6,17 @@ pipeline {
     maven 'Maven 3.6.3'
   }
     stages {
+        parallel:
+            
         stage('Build') {
             steps {
+                
                 sh 'python script.py'
                 copy()
-                //value=sh(returnStdout: true, script: '')
-                //sh 'echo "$value"'
+                value=sh(returnStdout: true, script: 'python.py')
+                sh 'echo "$value"'
                 sh 'mvn -B -DskipTests package'
+                for
             }
         }
         stage('Test') {
