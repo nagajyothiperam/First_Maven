@@ -34,7 +34,5 @@ pipeline {
     }
 }
 def copy(){
-    steps{
         sh 'cp script.py jenkins/'
-    }
-}
+   }
