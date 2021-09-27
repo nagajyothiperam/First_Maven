@@ -9,8 +9,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'python script.py'
-                //env.value=${sh(returnStdout: true, script: 'python script.py')}
-                sh 'echo "$env.value"'
+                value=sh(returnStdout: true, script: '')
+                sh 'echo "$value"'
                 sh 'mvn -B -DskipTests package'
             }
         }
