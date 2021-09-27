@@ -9,8 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'python script.py'
-                value=sh(returnStdout: true, script: '')
-                sh 'echo "$value"'
+                copy()
+                //value=sh(returnStdout: true, script: '')
+                //sh 'echo "$value"'
                 sh 'mvn -B -DskipTests package'
             }
         }
@@ -30,5 +31,10 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
+    }
+}
+def copy(){
+    steps{
+        sh 'cp script.py jenkins/'
     }
 }
