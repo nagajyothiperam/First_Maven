@@ -12,7 +12,7 @@ pipeline {
                 sh 'python script.py'
                 copy()
                 value=sh(returnStdout: true, script: 'python script.py')
-                sh 'echo "$value"'
+                    sh "echo ${value}"
                 sh 'mvn -B -DskipTests package'
                 }
             }
